@@ -33,7 +33,7 @@ const projects = [
       { name: "Php" },
       { name: "MySql" },
     ],
-    image: "/assets/work/work1.png",
+    image: "/assets/Work/work1.png",
     href: "https://github.com/sandynicholas3069/DatabaseTokoBukuIMS",
   },
   {
@@ -47,7 +47,7 @@ const projects = [
       { name: "Javascript" },
       { name: "Php" },
     ],
-    image: "/assets/work/work2.png",
+    image: "/assets/Work/work2.png",
     href: "https://github.com/sandynicholas3069/PersonalCVWebsite",
   },
   {
@@ -63,7 +63,7 @@ const projects = [
       { name: "Php" },
       { name: "MySql" },
     ],
-    image: "/assets/work/work3.png",
+    image: "/assets/Work/work3.png",
     href: "https://github.com/sandynicholas3069/DatabaseCyberGym",
   },
   {
@@ -79,7 +79,7 @@ const projects = [
       { name: "Php" },
       { name: "MySql" },
     ],
-    image: "/assets/work/work4.png",
+    image: "/assets/Work/work4.png",
     href: "https://github.com/sandynicholas3069/DatabaseRamadhanku",
   },
   {
@@ -95,7 +95,7 @@ const projects = [
       { name: "Php" },
       { name: "MySql" },
     ],
-    image: "/assets/work/work5.png",
+    image: "/assets/Work/work5.png",
     href: "https://github.com/nafispratama04/Pemweb",
   },
   {
@@ -105,7 +105,7 @@ const projects = [
     description:
       'A database app development project for the case study "Sistem Manajemen Pegawai Kasir"',
     stack: [{ name: "Java" }],
-    image: "/assets/work/work6.png",
+    image: "/assets/Work/work6.png",
     href: "https://github.com/nafispratama04/PBO",
   },
 ];
