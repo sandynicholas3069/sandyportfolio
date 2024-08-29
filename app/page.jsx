@@ -20,7 +20,7 @@ const Home = () => {
               Hello I`m <br />
               <span className="text-5xl text-accent">Sandy Nicholas</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80">
+            <p className="max-w-[600px] mb-9 text-white/80 text-justify">
               I am a 5th semester undergraduate student of Informatics bachelor
               degree and I am concerned about the Full Stack Website Developer
               role. Experienced with various languages, technologies, and
