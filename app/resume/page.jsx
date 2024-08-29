@@ -7,6 +7,8 @@ import {
   FaPhp,
   FaLaravel,
   FaJava,
+  FaReact,
+  FaNodeJs,
 } from "react-icons/fa";
 
 import { SiMysql, SiTaildwindcss, SiNextdotjs } from "react-icons/si";
@@ -50,14 +52,32 @@ const about = {
 
 //experience data
 const experience = {
-  title: "My Programming Experience",
+  title: "My Experience",
   description:
-    "2+ years experience, handling 8 projects with 200 code commited and 14 programming technologies mastered",
+    "2+ years experience, with 8 projects completed, 200 code commited, and 14 programming technologies mastered",
   items: [
     {
-      company: "UPN Veteran Jawa Timur as A Student",
-      position: "Junior Full Stack Website Developer",
-      time: "2022 - Present",
+      company: "PT. Badan Emas Indonesia",
+      position: "Freelance Website Developer",
+      duration: "2024 - Present",
+      location: "Indonesia",
+    },
+    {
+      company: "Chaniel Youth Community",
+      position: "Freelance Graphic Designer",
+      duration: "2024 - Present",
+      location: "Indonesia",
+    },
+    {
+      company: "UPN Veteran Jawa Timur",
+      position: "Junior Website Developer",
+      duration: "2022 - Present",
+      location: "Indonesia",
+    },
+    {
+      company: "SMA Negeri 3 Surabaya",
+      position: "Junior Graphic Designer",
+      duration: "2019 - 2022",
       location: "Indonesia",
     },
   ],
@@ -72,17 +92,17 @@ const education = {
     {
       school: "UPN Veteran Jawa Timur",
       degree: "Informatics Bachelor Degree",
-      time: "2022 - Present",
+      duration: "2022 - Present",
     },
     {
       school: "Online Course Platform",
       degree: "Basic Programming Language Bootcamp",
-      time: "2022 - Present",
+      duration: "2022 - Present",
     },
     {
       school: "SMA Negeri 3 Surabaya",
       degree: "Natural Sciences High School Diploma",
-      time: "2019 - 2022",
+      duration: "2019 - 2022",
     },
   ],
 };
@@ -118,6 +138,14 @@ const skills = {
       name: "Java",
     },
     {
+      icon: <FaReact />,
+      name: "React",
+    },
+    {
+      icon: <FaNodeJs />,
+      name: "Node.js",
+    },
+    {
       icon: <SiMysql />,
       name: "MySQL",
     },
@@ -132,8 +160,94 @@ const skills = {
   ],
 };
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { motion } from "framer-motion";
+
 const Resume = () => {
-  return <div>Resume Page</div>;
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: {
+          delay: 2.4,
+          duration: 0.4,
+          ease: "easeIn",
+        },
+      }}
+      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+    >
+      <div className="container mx auto">
+        <Tabs
+          defaultValue="experience"
+          className="flex flex-col xl:flex-row gap-[60px]"
+        >
+          <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
+            <TabsTrigger value="experience">Experience</TabsTrigger>
+            <TabsTrigger value="education">Education</TabsTrigger>
+            <TabsTrigger value="skills">Skills</TabsTrigger>
+            <TabsTrigger value="about">About Me</TabsTrigger>
+          </TabsList>
+
+          {/*Content*/}
+          <div className="min-h-[70vh] w-full">
+            {/*Experience*/}
+            <TabsContent value="experience" className="w-full">
+              <div className="flex flex-col gap-[30px] text-center xl:text-left">
+                <h3 className="text-4xl font-bold">{experience.title}</h3>
+                <p className="max-w-[600px] text-white/60 mx-autp xl:mx-0">
+                  {experience.description}
+                </p>
+                <ScrollArea className="h-[400px]">
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                    {experience.items.map((item, index) => {
+                      return (
+                        <li
+                          key={item.id}
+                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                        >
+                          <span className="text-accent">{item.duration}</span>
+                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                            {item.position}
+                          </h3>
+                          <div className="flex items-center gap-3">
+                            {/*dot*/}
+                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                            <p className="text-white/40">{item.company}</p>
+                          </div>
+                          <p className="text-white/90">{item.location}</p>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </ScrollArea>
+              </div>
+            </TabsContent>
+
+            {/*Education*/}
+            <TabsContent value="education" className="w-full">
+              Education
+            </TabsContent>
+            {/*Skills*/}
+            <TabsContent value="skills" className="w-full">
+              Skills
+            </TabsContent>
+            {/*About*/}
+            <TabsContent value="about" className="w-full">
+              About Me
+            </TabsContent>
+          </div>
+        </Tabs>
+      </div>
+    </motion.div>
+  );
 };
 
 export default Resume;
