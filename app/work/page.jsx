@@ -17,6 +17,7 @@ import {
 
 import Link from "next/link";
 import Image from "next/image";
+import WorkSliderBtns from "@/components/WorkSliderBtns";
 
 const projects = [
   {
@@ -111,10 +112,21 @@ const projects = [
 
 const Work = () => {
   const [project, setProject] = useState(projects[0]);
+
+  const handleSlideChange = (swiper) => {
+    //get current slide index
+    const currentIndex = swiper.activeIndex;
+    //update project state based on current slide index
+    setProject(projects[currentIndex]);
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      animate={{
+        opacity: 1,
+        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+      }}
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
     >
       <div className="container mx-auto">
@@ -136,7 +148,6 @@ const Work = () => {
                 {project.stack.map((item, index) => (
                   <li key={index} className="text-xl text-accent">
                     {item.name}
-                    {/* add comma if not last item */}
                     {index !== project.stack.length - 1 && ","}
                   </li>
                 ))}
@@ -145,7 +156,6 @@ const Work = () => {
               <div className="border border-white/20"></div>
               {/* button */}
               <div className="flex items-center gap-4">
-                {/* Link to Github */}
                 <Link href={project.href}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
@@ -160,7 +170,41 @@ const Work = () => {
                 </Link>
               </div>
             </div>
-            <div className="w-full xl:w-[50%]">slider</div>
+          </div>
+          <div className="w-full xl:w-[50%]">
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={1}
+              className="xl:h-[400px] mb-12"
+              onSlideChange={handleSlideChange}
+            >
+              {projects.map((project, index) => (
+                <SwiperSlide
+                  key={index}
+                  className="w-full flex justify-center items-center"
+                >
+                  <div className="relative flex justify-center items-center w-full h-full overflow-hidden">
+                    {/* Container div dengan ukuran lebih besar */}
+                    <div className="relative flex justify-center items-center w-[600px] h-[300px]">
+                      {" "}
+                      {/* Ukuran container yang lebih besar */}
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={2000} // ukuran asli gambar
+                        height={1000} // ukuran asli gambar
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+              {/* Button Swipe */}
+              <WorkSliderBtns
+                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+              />
+            </Swiper>
           </div>
         </div>
       </div>
